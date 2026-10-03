@@ -40,12 +40,11 @@ Torch is the deep learning framework used to define, train, and use models.
 
 import os
 import glob as glob
-import matplotlib.pyplot as plt
 
 import numpy as np
 
 import scipy.io as sio
-from scipy.ndimage.filters import gaussian_filter
+from scipy.ndimage import gaussian_filter
 from scipy.signal import resample, convolve
 from scipy.interpolate import interp1d
 from scipy.stats import invgauss
@@ -715,6 +714,7 @@ def plot_dFF_traces(traces,neuron_indices,frame_rate,spiking=None,discrete_spike
   If spike prediction data are available (matrix 'spiking'), they are plotted as well.
 
   """
+  import matplotlib.pyplot as plt
   try:
     import seaborn as sns; sns.set()
     plt.style.use('seaborn-darkgrid')
@@ -761,6 +761,7 @@ def plot_noise_matched_ground_truth( model_name, median_noise, frame_rate, nb_tr
 
   """
 
+  import matplotlib.pyplot as plt
   model_folder = os.path.join('Pretrained_models', model_name)
 
   # Load config file
@@ -846,6 +847,7 @@ def plot_noise_level_distribution(traces,frame_rate):
   Plots a histogram of the noise levels across all neurons in the dataset
 
   """
+  import matplotlib.pyplot as plt
   try:
     import seaborn as sns; sns.set()
     plt.style.use('seaborn-darkgrid')

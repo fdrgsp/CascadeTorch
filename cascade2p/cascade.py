@@ -488,8 +488,7 @@ def predict(
     elif threshold == 1:  # (1 or True)
         # Cut off noise floor (lower than 1/e of a single action potential)
 
-        from scipy.ndimage.filters import gaussian_filter
-        from scipy.ndimage.morphology import binary_dilation
+        from scipy.ndimage import gaussian_filter, binary_dilation
 
         # find out empirically  how large a single AP is (depends on frame rate and smoothing)
         single_spike = np.zeros(
@@ -607,7 +606,7 @@ def get_model_paths(model_path):
     model_dict = dict()
     for model_path in all_models:
         try:
-            noise_level = int(re.findall("_NoiseLevel_(\d+)", model_path)[0])
+            noise_level = int(re.findall(r"_NoiseLevel_(\d+)", model_path)[0])
         except:
             print("Error while processing the file with name: ", model_path)
             raise
